@@ -2,73 +2,262 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ContactWorld</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header>
+<nav class="side-nav">
+  <a href="#top">Top</a>
+  <a href="#overview">Overview</a>
+  <a href="#framework">Framework</a>
+  <a href="#findings">Findings</a>
+  <a href="#planning-gallery">Gallery</a>
+  <a href="#real-world">Real Robot</a>
+  <a href="#bibtex">BibTeX</a>
+</nav>
+
+<header id="top">
   <h1>ContactWorld</h1>
   <h2>What Matters in Vision-Tactile World Models for Contact-Rich Manipulation</h2>
 
-  <p>
-    Zhiyuan Zhang*, Pokuang Zhou*, Kaidi Zhang, Adeesh Desai,
-    Temitope Amosa, Davood Soleymanzadeh, Jiuzhou Lei, Minghui Zheng, Yu She†
+  <p class="authors">
+    <a href="https://zhangzhiyuanzhang.github.io/personal_website/" target="_blank">Zhiyuan Zhang*</a>,
+    <a href="https://pokuangzhou.github.io/website/" target="_blank">Pokuang Zhou*</a>,
+    <a href="https://aaronzkd.github.io/KaidiZhang.web/" target="_blank">Kaidi Zhang</a>,
+    <a href="https://scholar.google.com/citations?user=A880yg0AAAAJ&hl=en&oi=ao" target="_blank">Adeesh Desai</a>,
+    <a href="https://scholar.google.com/citations?user=Lloa6s4AAAAJ&hl=en&oi=ao" target="_blank">Temitope Amosa</a>,
+    <br>
+    <a href="https://scholar.google.com/citations?user=Rmadq64AAAAJ&hl=en" target="_blank">Davood Soleymanzadeh</a>,
+    <a href="https://scholar.google.com/citations?user=X52xke0AAAAJ&hl=en" target="_blank">Jiuzhou Lei</a>,
+    <a href="https://zh.engr.tamu.edu/" target="_blank">Minghui Zheng</a>,
+    <a href="https://www.purduemars.com/" target="_blank">Yu She<sup>†</sup></a>
   </p>
 
-  <p>
+  <p class="affiliations">
     Purdue University &nbsp; | &nbsp; Texas A&amp;M University<br>
     * Equal Contribution &nbsp; † Corresponding Author
   </p>
 
   <div class="buttons">
-    <a href="pdfs/ContactWorld_arxiv.pdf">Paper</a>
+    <a href="https://drive.google.com/file/d/15ToTrPhCByiSU59WxpiK-_ueZB6LVd8c/view?usp=drive_link" target="_blank">Paper</a>
     <a href="#">arXiv</a>
-    <a href="#">Code</a>
-    <a href="#">Dataset</a>
-    <a href="pdfs/ContactWorld_video.pdf">Video</a>
+    <a href="https://github.com/PokuangZhou/ContactWorld">Code</a>
+    <a href="https://huggingface.co/datasets/Pokuang/ContactWorld/tree/main" target="_blank">Dataset</a>
+    <a href="https://drive.google.com/file/d/1kWCeB5C1ebT7S4B8_Ge6phriIfrAhvMx/view?usp=drive_link" target="_blank">Video</a>
   </div>
 </header>
 
-<section>
-  <img src="assets/teaser.png" class="wide">
-</section>
+<section class="hero-video">
+  <div class="hero-summary">
+    <span>12 Contact-Rich Tasks</span>
+    <span>|</span>
+    <span>4 Task Categories</span>
+    <span>|</span>
+    <span>6 Visual-Tactile Modalities</span>
+  </div>
 
-<section>
-  <h2>Abstract</h2>
-  <p>
-    ContactWorld is a benchmark and systematic empirical study of vision-tactile
-    world models for contact-rich manipulation. Across 12 contact-rich tasks,
-    we find that representation structure, cross-modal compatibility, and
-    long-horizon robustness are key to stable vision-tactile world modeling.
+  <video autoplay muted loop playsinline controls>
+    <source src="videos/teaser.mp4" type="video/mp4">
+  </video>
+
+  <p class="hero-caption">
+    ContactWorld is a benchmark and systematic empirical study of visual-tactile world models for contact-rich manipulation.
   </p>
 </section>
 
-<section>
-  <h2>Benchmark Overview</h2>
-  <img src="assets/observations.png" class="wide">
+<section id="overview">
+  <h2>Overview</h2>
+
+  <p>
+    ContactWorld contains 12 contact-rich manipulation tasks spanning insertion,
+    screwing, disassembly, and exploration. Each task provides six synchronized
+    visual-tactile observation modalities.
+  </p>
+
+  <video class="content-media" autoplay muted loop playsinline controls>
+    <source src="videos/modality.mp4" type="video/mp4">
+  </video>
+
+  <p class="figure-note">
+    Wrist View and Front View provide RGB visual observations.
+    Point Cloud captures structured 3D geometry.
+    TacDepth represents tactile depth deformation,
+    TacRGB records high-resolution tactile appearance,
+    and TacFF encodes contact force distributions and directions.
+    </p>
+
 </section>
 
-<section>
-  <h2>Method</h2>
-  <img src="assets/pipeline_train.png" class="wide">
-  <img src="assets/pipeline_plan.png" class="wide">
+<section id="framework">
+  <h2>World Model Framework</h2>
+
+  <p>
+    ContactWorld trains latent world models using multimodal visual-tactile observations
+    and performs goal-conditioned planning through autoregressive latent rollout and model-predictive control.
+  </p>
+
+  <img src="assets/architecture.svg" class="content-media" alt="ContactWorld Architecture">
+
+  <p class="figure-note">
+    (A) Training: multimodal latent world model learning. 
+    (B) Planning: goal-conditioned latent rollout with MPC.
+  </p>
 </section>
 
-<section>
-  <h2>Key Findings</h2>
-  <img src="assets/insight1.png" class="wide">
-  <img src="assets/insight2.png" class="wide">
-  <img src="assets/insight3.png" class="wide">
+<section id="findings">
+  <h2>What Matters in Vision-Tactile World Models?</h2>
+
+  <p class="section-subtitle">
+    ContactWorld reveals three key factors that determine world-model planning performance in contact-rich manipulation.
+  </p>
+
+  <div class="finding-tabs">
+    <button class="finding-btn active" onclick="showFinding('f1', this)">Representation</button>
+    <button class="finding-btn" onclick="showFinding('f2', this)">Compatibility</button>
+    <button class="finding-btn" onclick="showFinding('f3', this)">Long Horizon</button>
+  </div>
+
+  <div id="f1" class="finding-panel">
+    <p class="finding-summary">
+      <b>Representation structure matters.</b>
+      Representations with stronger spatial structure and temporal continuity consistently achieve better planning performance.
+      Point clouds outperform image-based observations, while PointCloud+TacFF achieves the strongest overall results.
+    </p>
+    <img src="assets/finding_1.svg" class="content-media" alt="Finding 1">
+  </div>
+
+  <div id="f2" class="finding-panel" style="display:none;">
+    <p class="finding-summary">
+      <b>Cross-modal compatibility matters.</b>
+      Tactile sensing is not universally beneficial.
+      The effectiveness of tactile feedback depends strongly on how well it aligns with the visual representation.
+      PointCloud+TacFF forms the most compatible visual-tactile pair.
+    </p>
+    <img src="assets/finding_2.svg" class="finding-figure" alt="Finding 2">
+  </div>
+
+  <div id="f3" class="finding-panel" style="display:none;">
+    <p class="finding-summary">
+      <b>Long-horizon robustness matters.</b>
+      The benefit of tactile sensing grows as planning horizons increase.
+      Lower rollout prediction error translates into larger planning gains for distant goals.
+    </p>
+    <img src="assets/finding_3.svg" class="content-media" alt="Finding 3">
+  </div>
 </section>
 
-<section>
-  <h2>Real-World Validation</h2>
-  <img src="assets/real_world.png" class="wide">
+<section id="planning-gallery">
+  <h2>World Model Planning Gallery</h2>
+
+  <p class="section-subtitle">
+    Representative rollouts across all ContactWorld tasks.
+    Each video compares four world models: Wrist View, Front View, PointCloud, and PointCloud+TacFF.
+    More modality combinations can be reproduced using the released code.
+  </p>
+
+  <div class="gallery-tabs">
+    <button class="gallery-btn active" onclick="showGallery('insertion', this)">Insertion</button>
+    <button class="gallery-btn" onclick="showGallery('screwing', this)">Screwing</button>
+    <button class="gallery-btn" onclick="showGallery('disassembly', this)">Disassembly</button>
+    <button class="gallery-btn" onclick="showGallery('exploration', this)">Exploration</button>
+  </div>
+
+  <div id="insertion" class="gallery-panel">
+    <h3>USB Plug Insertion</h3>
+    <video class="content-media" autoplay muted loop playsinline controls>
+      <source src="videos/usb.mp4" type="video/mp4">
+    </video>
+
+    <h3>Peg Insertion</h3>
+    <video class="content-media" autoplay muted loop playsinline controls>
+      <source src="videos/peg.mp4" type="video/mp4">
+    </video>
+
+    <h3>Power Plug Insertion</h3>
+    <video class="content-media" autoplay muted loop playsinline controls>
+      <source src="videos/power.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div id="screwing" class="gallery-panel" style="display:none;">
+    <h3>Valve Rotation</h3>
+    <video class="content-media" autoplay muted loop playsinline controls>
+      <source src="videos/valve.mp4" type="video/mp4">
+    </video>
+
+    <h3>Bulb Installation</h3>
+    <video class="content-media" autoplay muted loop playsinline controls>
+      <source src="videos/bulb.mp4" type="video/mp4">
+    </video>
+
+    <h3>Nut-Bolt Screwing</h3>
+    <video class="content-media" autoplay muted loop playsinline controls>
+      <source src="videos/nut.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div id="disassembly" class="gallery-panel" style="display:none;">
+    <h3>Loose Lid Removal</h3>
+    <video class="content-media" autoplay muted loop playsinline controls>
+      <source src="videos/lid.mp4" type="video/mp4">
+    </video>
+
+    <h3>Barbed Spike Disassembly</h3>
+    <video class="content-media" autoplay muted loop playsinline controls>
+      <source src="videos/spike.mp4" type="video/mp4">
+    </video>
+
+    <h3>Barbed Flat Disassembly</h3>
+    <video class="content-media" autoplay muted loop playsinline controls>
+      <source src="videos/flat.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div id="exploration" class="gallery-panel" style="display:none;">
+    <h3>Blind-Box Exploration</h3>
+    <video class="content-media" autoplay muted loop playsinline controls>
+      <source src="videos/box.mp4" type="video/mp4">
+    </video>
+
+    <h3>Ball Sorting (Normal Light)</h3>
+    <video class="content-media" autoplay muted loop playsinline controls>
+      <source src="videos/normal.mp4" type="video/mp4">
+    </video>
+
+    <h3>Ball Sorting (Dim Light)</h3>
+    <video class="content-media" autoplay muted loop playsinline controls>
+      <source src="videos/dim.mp4" type="video/mp4">
+    </video>
+  </div>
 </section>
 
-<section>
+
+<section id="real-world">
+
+  <h2>Real-World Deployment</h2>
+
+  <p class="section-subtitle">
+    Autonomous vision-tactile world-model planning on physical robots.
+  </p>
+
+  <video class="content-media"
+         autoplay
+         muted
+         loop
+         playsinline
+         controls>
+    <source src="videos/realworld.mp4" type="video/mp4">
+  </video>
+
+</section>
+
+
+<section id="bibtex">
   <h2>BibTeX</h2>
+
   <pre><code>@article{zhang2026contactworld,
   title={ContactWorld: What Matters in Vision-Tactile World Models for Contact-Rich Manipulation},
   author={Zhang, Zhiyuan and Zhou, Pokuang and Zhang, Kaidi and Desai, Adeesh and Amosa, Temitope and Soleymanzadeh, Davood and Lei, Jiuzhou and Zheng, Minghui and She, Yu},
@@ -76,6 +265,34 @@
   year={2026}
 }</code></pre>
 </section>
+
+<script>
+function showFinding(id, btn) {
+  document.querySelectorAll('.finding-panel').forEach(panel => {
+    panel.style.display = 'none';
+  });
+
+  document.querySelectorAll('.finding-btn').forEach(button => {
+    button.classList.remove('active');
+  });
+
+  document.getElementById(id).style.display = 'block';
+  btn.classList.add('active');
+}
+
+function showGallery(id, btn) {
+  document.querySelectorAll('.gallery-panel').forEach(panel => {
+    panel.style.display = 'none';
+  });
+
+  document.querySelectorAll('.gallery-btn').forEach(button => {
+    button.classList.remove('active');
+  });
+
+  document.getElementById(id).style.display = 'block';
+  btn.classList.add('active');
+}
+</script>
 
 </body>
 </html>
