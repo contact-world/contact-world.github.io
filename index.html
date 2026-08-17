@@ -319,6 +319,19 @@ function showGallery(id, btn) {
   document.getElementById(id).style.display = 'block';
   btn.classList.add('active');
 }
+
+function showRealGallery(id, btn) {
+  document.querySelectorAll('.real-gallery-panel').forEach(panel => {
+    panel.style.display = 'none';
+  });
+
+  document.querySelectorAll('#real-world .gallery-btn').forEach(button => {
+    button.classList.remove('active');
+  });
+
+  document.getElementById(id).style.display = 'block';
+  btn.classList.add('active');
+}
 </script>
 
 </body>
