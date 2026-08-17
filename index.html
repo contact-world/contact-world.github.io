@@ -241,20 +241,46 @@
   <h2>Real-World Deployment</h2>
 
   <p class="section-subtitle">
-    Autonomous vision-tactile world-model planning on physical robots.
+    Expanded real-world evaluation with GelSight Mini across four contact-rich manipulation tasks.
+    Each task compares PointCloud, PointCloud+TacRGB, and PointCloud+TacFF on unseen evaluation trials.
   </p>
 
-  <video class="content-media"
-         autoplay
-         muted
-         loop
-         playsinline
-         controls>
-    <source src="videos/realworld.mp4" type="video/mp4">
-  </video>
+  <div class="gallery-tabs">
+    <button class="gallery-btn active" onclick="showRealGallery('real-usb', this)">USB Insertion</button>
+    <button class="gallery-btn" onclick="showRealGallery('real-disassembly', this)">Elastic Clip Disassembly</button>
+    <button class="gallery-btn" onclick="showRealGallery('real-valve', this)">Valve Rotation</button>
+    <button class="gallery-btn" onclick="showRealGallery('real-sorting', this)">Ball Sorting</button>
+  </div>
+
+  <div id="real-usb" class="real-gallery-panel">
+    <h3>USB Insertion</h3>
+    <video class="content-media" autoplay muted loop playsinline controls>
+      <source src="videos/real_usb.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div id="real-disassembly" class="real-gallery-panel" style="display:none;">
+    <h3>Elastic Clip Disassembly</h3>
+    <video class="content-media" autoplay muted loop playsinline controls>
+      <source src="videos/real_dis.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div id="real-valve" class="real-gallery-panel" style="display:none;">
+    <h3>Valve Rotation</h3>
+    <video class="content-media" autoplay muted loop playsinline controls>
+      <source src="videos/real_valve.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div id="real-sorting" class="real-gallery-panel" style="display:none;">
+    <h3>Ball Sorting</h3>
+    <video class="content-media" autoplay muted loop playsinline controls>
+      <source src="videos/real_sorting.mp4" type="video/mp4">
+    </video>
+  </div>
 
 </section>
-
 
 <section id="bibtex">
   <h2>BibTeX</h2>
